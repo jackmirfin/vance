@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, ShieldCheck, Star } from "lucide-react"
+import { ArrowRight, ArrowUpRight, CheckCircle2, MapPin } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { brandAssets } from "@/lib/brand-assets"
 
@@ -21,11 +21,11 @@ export function HeroSection() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/65 to-forest/25"
+        className="absolute inset-0 bg-gradient-to-r from-forest/80 via-forest/46 to-transparent"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-forest/45 via-transparent to-forest/10"
+        className="absolute inset-0 bg-gradient-to-t from-forest/32 via-transparent to-transparent"
       />
 
       <div className="relative z-10 mx-auto flex min-h-[34rem] max-w-7xl items-center px-4 py-16 sm:min-h-[40rem] sm:px-6 sm:py-20 lg:px-8 lg:py-24">
@@ -37,10 +37,7 @@ export function HeroSection() {
             A garden that feels <span className="font-normal italic">like yours.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-linen/90 sm:text-lg sm:leading-8">
-            Advance Gardens creates thoughtful outdoor spaces—designed around your home, your family, and how you want to spend time outside.
-          </p>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-linen/80">
-            From Northampton to the surrounding Northamptonshire communities, every garden begins with a friendly conversation on site.
+            We design and build thoughtful gardens across Northamptonshire—from warm patios to planting plans made for everyday life.
           </p>
 
           <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
@@ -61,20 +58,14 @@ export function HeroSection() {
           </div>
 
           <div className="mt-8 flex flex-col gap-4 border-t border-linen/30 pt-5 sm:flex-row sm:items-center sm:gap-6">
-            <div className="flex items-center gap-3">
-              <div aria-label="4.9 out of 5 stars" className="flex gap-0.5 text-accent">
-                {Array.from({ length: 5 }, (_, index) => (
-                  <Star key={index} aria-hidden="true" className="size-3.5 fill-current" />
-                ))}
-              </div>
-              <p className="text-xs font-semibold text-linen">
-                <span className="text-sm">4.9/5</span> from 120+ local projects
-              </p>
-            </div>
+            <p className="inline-flex items-center gap-2 text-xs font-medium text-linen/90">
+              <MapPin aria-hidden="true" className="size-4 text-linen" />
+              Working across Northamptonshire
+            </p>
             <span aria-hidden="true" className="hidden h-5 w-px bg-linen/35 sm:block" />
-            <p className="inline-flex items-center gap-2 text-xs font-medium text-linen/85">
-              <ShieldCheck aria-hidden="true" className="size-4 text-linen" />
-              Fully insured &amp; guaranteed
+            <p className="inline-flex items-center gap-2 text-xs font-medium text-linen/90">
+              <CheckCircle2 aria-hidden="true" className="size-4 text-linen" />
+              Free first site visit
             </p>
           </div>
         </Reveal>

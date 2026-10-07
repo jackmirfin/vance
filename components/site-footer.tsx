@@ -19,21 +19,16 @@ export function SiteFooter() {
             <Link
               href="#top"
               aria-label="Advance Gardens home"
-              className="inline-flex flex-col items-start gap-2"
+              className="inline-flex items-center"
             >
-              <span className="rounded-xl bg-linen px-3 py-2">
-                <Image
-                  src={brandAssets.logo}
-                  alt="Advance Gardens"
-                  width={320}
-                  height={100}
-                  sizes="192px"
-                  className="h-10 w-48 object-contain"
-                />
-              </span>
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-linen/60">
-                Garden Design &amp; Landscaping
-              </span>
+              <Image
+                src={brandAssets.logo}
+                alt="Advance Gardens — Garden Design & Landscaping"
+                width={1954}
+                height={417}
+                sizes="(min-width: 1024px) 260px, 80vw"
+                className="logo-cream h-auto w-[260px] max-w-full object-contain object-left"
+              />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-linen/65">
               Gardens made for real life—thoughtful design, careful craft, and a little more room to be outside.

@@ -1,5 +1,5 @@
 export const brandAssets = {
-  logo: "https://res.cloudinary.com/dlgn2pybf/image/upload/v1791411780/Advance_Gardens_Monoline_Landscape_Logo_ll86hg.png",
+  logo: "https://res.cloudinary.com/dlgn2pybf/image/upload/e_trim:15/v1791411780/Advance_Gardens_Monoline_Landscape_Logo_ll86hg.png",
   hero: "https://res.cloudinary.com/dlgn2pybf/image/upload/v1791411206/Warm_sandstone_patio_with_lavender_border_degho5.png",
   supporting: "https://res.cloudinary.com/dlgn2pybf/image/upload/v1791411204/Northamptonshire_Garden_Naturally_Transformed-1_rl719d.png",
   projects: {

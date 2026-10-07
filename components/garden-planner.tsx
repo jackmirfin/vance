@@ -114,7 +114,7 @@ export function GardenPlanner() {
             Your garden, your starting point
           </p>
           <h2 id="planner-title" className="max-w-xl text-4xl leading-[1.02] text-forest sm:text-5xl lg:text-6xl">
-            Let&apos;s make a little more room outside.
+            Start with a site visit.
           </h2>
           <p className="mt-5 max-w-md text-sm leading-7 text-ink-soft sm:text-base">
             Share a few first thoughts. We&apos;ll use them to make your free site visit feel useful from the very first conversation.
@@ -149,7 +149,7 @@ export function GardenPlanner() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <Card className="rounded-3xl border border-forest/10 bg-background p-0 shadow-[0_22px_64px_-42px_rgba(36,40,37,0.55)]">
+          <Card className="rounded-lg border border-forest/10 bg-background p-0 shadow-none">
             <CardHeader className="gap-5 px-5 pb-5 pt-5 sm:px-8 sm:pt-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -234,7 +234,7 @@ export function GardenPlanner() {
                                 <ToggleGroupItem
                                   key={size.value}
                                   value={size.value}
-                                  className="min-h-32 flex-col items-start justify-between rounded-2xl p-4 text-left data-pressed:border-forest data-pressed:bg-forest data-pressed:text-linen sm:p-4"
+                                  className="min-h-32 flex-col items-start justify-between rounded-lg p-4 text-left data-pressed:border-forest data-pressed:bg-forest data-pressed:text-linen sm:p-4"
                                 >
                                   <Icon aria-hidden="true" className="size-5 text-terracotta group-data-pressed:text-linen" />
                                   <span className="flex flex-col gap-1">
@@ -267,7 +267,7 @@ export function GardenPlanner() {
                                 <ToggleGroupItem
                                   key={option.value}
                                   value={option.value}
-                                  className="min-h-14 justify-start rounded-xl px-4 py-3 text-left text-xs font-semibold data-pressed:border-forest data-pressed:bg-forest data-pressed:text-linen sm:text-sm"
+                                  className="min-h-14 justify-start rounded-lg px-4 py-3 text-left text-xs font-semibold data-pressed:border-forest data-pressed:bg-forest data-pressed:text-linen sm:text-sm"
                                 >
                                   <Icon aria-hidden="true" className="size-4 shrink-0 text-terracotta group-data-pressed:text-linen" />
                                   <span>{option.label}</span>
@@ -312,7 +312,7 @@ export function GardenPlanner() {
                                   placeholder="Jane Smith"
                                   value={contact.name}
                                   onChange={(event) => updateContact("name", event.target.value)}
-                                  className="h-11 rounded-xl border-forest/15 bg-linen/55 px-3"
+                                  className="h-11 rounded-lg border-forest/15 bg-linen/55 px-3"
                                   required
                                 />
                               </Field>
@@ -326,7 +326,7 @@ export function GardenPlanner() {
                                   placeholder="jane@example.com"
                                   value={contact.email}
                                   onChange={(event) => updateContact("email", event.target.value)}
-                                  className="h-11 rounded-xl border-forest/15 bg-linen/55 px-3"
+                                  className="h-11 rounded-lg border-forest/15 bg-linen/55 px-3"
                                   required
                                 />
                               </Field>
@@ -340,7 +340,7 @@ export function GardenPlanner() {
                                   placeholder="(973) 555-0123"
                                   value={contact.phone}
                                   onChange={(event) => updateContact("phone", event.target.value)}
-                                  className="h-11 rounded-xl border-forest/15 bg-linen/55 px-3"
+                                  className="h-11 rounded-lg border-forest/15 bg-linen/55 px-3"
                                 />
                               </Field>
                               <Field className="sm:col-span-2">
@@ -351,7 +351,7 @@ export function GardenPlanner() {
                                   placeholder="A patio that needs a rethink, more room for dinner, a spot for the kids..."
                                   value={contact.notes}
                                   onChange={(event) => updateContact("notes", event.target.value)}
-                                  className="min-h-24 rounded-xl border-forest/15 bg-linen/55 px-3 py-3"
+                                  className="min-h-24 rounded-lg border-forest/15 bg-linen/55 px-3 py-3"
                                 />
                               </Field>
                             </FieldGroup>

@@ -1,14 +1,26 @@
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, MapPin, ShieldCheck, Star } from "lucide-react"
+import { ArrowUpRight, MapPin, ShieldCheck } from "lucide-react"
 import { Reveal } from "@/components/reveal"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { brandAssets } from "@/lib/brand-assets"
 
+const reassurances = [
+  {
+    title: "Fully insured",
+    description: "Professional cover from the first visit through the final detail.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "5-year structural guarantee",
+    description: "A little extra confidence in the work built to last.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Rooted in Northamptonshire",
+    description: "A local team, working in gardens across the county.",
+    icon: MapPin,
+  },
+]
 
 export function TrustSection() {
   return (
@@ -24,97 +36,71 @@ export function TrustSection() {
               Local by nature
             </p>
             <h2 id="trust-title" className="max-w-xl text-4xl leading-[1.02] text-forest sm:text-5xl lg:text-6xl">
-              Good work is worth talking about.
+              Local gardens, made personal.
             </h2>
           </div>
           <p className="max-w-lg text-sm leading-7 text-ink-soft sm:text-base lg:justify-self-end">
-            From the first site visit to the final walkthrough, we keep the work personal, clear, and rooted in the neighborhood.
+            Every garden starts with a conversation about the space, the light, and what you would love to do outside.
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-[0.92fr_1.08fr]">
-          <Reveal className="h-full">
-            <Card className="h-full rounded-3xl border-0 bg-forest p-0 text-linen shadow-sm">
-              <CardHeader className="gap-4 px-6 pb-3 pt-6 sm:px-8 sm:pt-8">
-                <div aria-label="5 out of 5 stars" className="flex gap-1 text-[#E5B278]">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Star key={index} aria-hidden="true" className="size-4 fill-current" />
-                  ))}
-                </div>
-                <CardTitle className="font-display text-6xl font-medium tracking-tight text-linen sm:text-7xl">
-                  4.9<span className="text-3xl text-linen/70">/5</span>
-                </CardTitle>
-                <CardDescription className="max-w-xs text-sm leading-6 text-linen/70">
-                  Average rating across 120+ local garden projects.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="px-6 pb-6 sm:px-8 sm:pb-8">
-                <div className="mt-3 flex items-center gap-2 border-t border-linen/15 pt-4 text-xs font-medium text-linen/80">
-                  <MapPin aria-hidden="true" className="size-4 text-[#E5B278]" />
-                  Proudly serving Northamptonshire
-                </div>
-              </CardContent>
-            </Card>
+        <div className="mt-10 grid gap-7 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+          <Reveal className="relative min-h-[25rem] overflow-hidden rounded-lg bg-sage sm:min-h-[32rem]">
+            <Image
+              src={brandAssets.supporting}
+              alt="A Northamptonshire garden naturally transformed with considered planting."
+              fill
+              sizes="(min-width: 1024px) 56vw, 100vw"
+              className="object-cover"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-forest/80 via-forest/20 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 text-linen sm:p-8">
+              <p className="text-[0.62rem] font-bold uppercase tracking-[0.17em] text-linen/80">
+                Garden spotlight · Northamptonshire
+              </p>
+              <h3 className="mt-3 max-w-lg text-3xl leading-tight sm:text-4xl">
+                A garden, naturally transformed.
+              </h3>
+              <p className="mt-3 max-w-lg text-sm leading-6 text-linen/85">
+                Considered planting brings a softer, more welcoming rhythm to everyday time outdoors.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Reveal delay={0.06} className="h-full">
-              <Card className="h-full rounded-3xl border border-forest/10 bg-card p-0 shadow-sm">
-                <CardHeader className="gap-4 px-5 pb-3 pt-5 sm:px-6 sm:pt-6">
-                  <span className="flex size-11 items-center justify-center rounded-full bg-linen text-forest">
-                    <ShieldCheck aria-hidden="true" className="size-5" />
-                  </span>
-                  <CardTitle className="text-xl font-semibold text-forest">Fully insured</CardTitle>
-                  <CardDescription className="text-sm leading-6 text-ink-soft">
-                    A thoughtful, professional team—covered from the first visit through the final detail.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="px-5 pb-5 sm:px-6 sm:pb-6">
-                  <span className="inline-flex rounded-full border border-forest/10 bg-linen px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-forest">
-                    Confidence in every step
-                  </span>
-                </CardContent>
-              </Card>
-            </Reveal>
-
-            <Reveal delay={0.12} className="h-full">
-              <Card className="h-full rounded-3xl border border-forest/10 bg-card p-0 shadow-sm">
-                <CardHeader className="gap-4 px-5 pb-3 pt-5 sm:px-6 sm:pt-6">
-                  <span className="flex size-11 items-center justify-center rounded-full bg-linen text-forest">
-                    <Star aria-hidden="true" className="size-5" />
-                  </span>
-                  <CardTitle className="text-xl font-semibold text-forest">5-year guarantee</CardTitle>
-                  <CardDescription className="text-sm leading-6 text-ink-soft">
-                    Structural work is backed by a five-year guarantee, so the foundations feel as considered as the finish.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="px-5 pb-5 sm:px-6 sm:pb-6">
-                  <span className="inline-flex rounded-full border border-forest/10 bg-linen px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-forest">
-                    Built to last
-                  </span>
-                </CardContent>
-              </Card>
-            </Reveal>
-          </div>
+          <Reveal delay={0.04} className="flex flex-col items-start justify-center py-2 lg:py-6">
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.17em] text-terracotta">
+              The way we work
+            </p>
+            <h3 className="mt-3 max-w-md text-3xl leading-[1.08] text-forest sm:text-4xl">
+              Thoughtful design. Careful craft.
+            </h3>
+            <p className="mt-4 max-w-lg text-sm leading-7 text-ink-soft sm:text-base">
+              From the first site visit to the final walkthrough, we keep the process clear and the details considered—so the finished garden feels like it belongs to you.
+            </p>
+            <Link
+              href="#planner"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
+            >
+              Book Your Site Consultation
+              <ArrowUpRight aria-hidden="true" className="size-4" />
+            </Link>
+          </Reveal>
         </div>
 
-        <div className="mt-9 flex flex-col gap-5 border-t border-forest/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-terracotta">
-              Our local service area
-            </p>
-            <p className="mt-2 text-sm leading-6 text-ink-soft">
-              Northampton and surrounding Northamptonshire communities.
-            </p>
-          </div>
-          <Link
-            href="#planner"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-all hover:-translate-y-0.5 hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
-          >
-            Book Your Site Consultation
-            <ArrowUpRight aria-hidden="true" className="size-4" />
-          </Link>
-        </div>
+        <ul className="mt-9 grid gap-4 border-y border-forest/10 py-5 sm:grid-cols-3 sm:divide-x sm:divide-forest/10 sm:gap-0">
+          {reassurances.map((item) => {
+            const Icon = item.icon
+            return (
+              <li key={item.title} className="flex items-start gap-3 sm:px-5 first:sm:pl-0 last:sm:pr-0">
+                <Icon aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-terracotta" />
+                <div>
+                  <p className="text-sm font-semibold text-forest">{item.title}</p>
+                  <p className="mt-1 text-xs leading-5 text-ink-soft">{item.description}</p>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )

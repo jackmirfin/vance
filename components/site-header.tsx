@@ -53,7 +53,7 @@ export function SiteHeader() {
       animate={{ y: headerHidden ? "-105%" : "0%" }}
       transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeInOut" }}
       inert={headerHidden}
-      className="sticky top-0 z-50 border-b border-forest/10 bg-linen shadow-sm"
+      className="sticky top-0 z-50 border-b border-forest/10 bg-linen shadow-none"
     >
       <nav
         aria-label="Primary navigation"
@@ -68,11 +68,11 @@ export function SiteHeader() {
           <Image
             src={brandAssets.logo}
             alt="Advance Gardens"
-            width={320}
-            height={100}
+            width={1954}
+            height={417}
             priority
-            sizes="(min-width: 640px) 208px, 160px"
-            className="h-10 w-40 object-contain object-left sm:h-12 sm:w-52"
+            sizes="(min-width: 640px) 248px, 196px"
+            className="h-[42px] w-[196px] object-contain object-left sm:h-[52px] sm:w-[248px]"
           />
         </Link>
 

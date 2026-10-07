@@ -106,7 +106,7 @@ export function ServicesSection() {
             Everything outside, considered
           </p>
           <h2 id="services-title" className="text-4xl leading-[1.02] text-forest sm:text-5xl lg:text-6xl">
-            The right pieces for your kind of garden.
+            Designed around your garden.
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-7 text-ink-soft sm:text-base">
             A complete transformation or one thoughtful improvement—we bring the same care to every part of the plan.
@@ -121,7 +121,7 @@ export function ServicesSection() {
         >
           <TabsList
             variant="line"
-            className="w-full justify-start gap-4 overflow-x-auto rounded-none border-b border-forest/10 px-0 pb-2 sm:gap-7"
+            className="h-auto w-full flex-wrap justify-start gap-x-4 gap-y-1 overflow-visible rounded-none border-b border-forest/10 p-0 pb-2 sm:gap-x-7"
           >
             {services.map((service) => (
               <TabsTrigger
@@ -136,7 +136,7 @@ export function ServicesSection() {
 
           <TabsContent value={activeService} className="mt-0 focus-visible:outline-none">
             <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-              <div className="relative overflow-hidden rounded-3xl border border-forest/10 bg-sage shadow-sm">
+              <div className="relative overflow-hidden rounded-lg border border-forest/10 bg-sage shadow-none">
                 <div className="relative aspect-[1.35] sm:aspect-[1.55]">
                   <Image
                     src={selectedService.image}
@@ -146,7 +146,7 @@ export function ServicesSection() {
                     className="object-cover transition-transform duration-700 hover:scale-[1.025]"
                   />
                 </div>
-                <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl border border-white/50 bg-linen/90 px-4 py-3 shadow-sm backdrop-blur-md sm:bottom-5 sm:left-5">
+                <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-lg border border-white/50 bg-linen/90 px-4 py-3 shadow-none backdrop-blur-md sm:bottom-5 sm:left-5">
                   <span className="flex size-10 items-center justify-center rounded-full bg-forest text-linen">
                     <ServiceIcon aria-hidden="true" className="size-4" />
                   </span>
@@ -193,7 +193,7 @@ export function ServicesSection() {
               Care that keeps the good going
             </p>
             <h3 className="text-3xl leading-tight text-forest sm:text-4xl">
-              Maintenance &amp; seasonal care tips.
+              Care, season by season.
             </h3>
             <p className="mt-4 text-sm leading-7 text-ink-soft">
               Small, timely habits help a new garden settle in beautifully. Open a note for a few practical starting points.
@@ -201,7 +201,7 @@ export function ServicesSection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <Card className="rounded-3xl border border-forest/10 bg-card p-0 shadow-sm">
+            <Card className="rounded-lg border border-forest/10 bg-card p-0 shadow-none">
               <CardHeader className="px-5 pb-4 pt-5 sm:px-7 sm:pt-7">
                 <CardTitle className="text-lg font-semibold text-forest">A little guidance, season by season</CardTitle>
                 <CardDescription className="text-sm leading-6 text-ink-soft">

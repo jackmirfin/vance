@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Check, MapPin } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { BeforeAfterSlider } from "@/components/before-after-slider"
 import { brandAssets } from "@/lib/brand-assets"
 import { Reveal } from "@/components/reveal"
@@ -115,7 +115,7 @@ export function ProjectGallery() {
               Real gardens, thoughtfully reworked
             </p>
             <h2 id="projects-title" className="text-4xl leading-[1.02] text-forest sm:text-5xl lg:text-6xl">
-              See what a little more outside can do.
+              Gardens, transformed.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-ink-soft sm:text-base">
@@ -131,7 +131,7 @@ export function ProjectGallery() {
         >
           <TabsList
             variant="line"
-            className="w-full justify-start gap-4 overflow-x-auto rounded-none border-b border-forest/10 px-0 pb-2 sm:gap-7"
+            className="h-auto w-full flex-wrap justify-start gap-x-4 gap-y-1 overflow-visible rounded-none border-b border-forest/10 p-0 pb-2 sm:gap-x-7"
           >
             {filters.map((filter) => (
               <TabsTrigger
@@ -145,10 +145,14 @@ export function ProjectGallery() {
           </TabsList>
 
           <TabsContent value={activeFilter} className="mt-0 focus-visible:outline-none">
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2">
               {visibleProjects.map((project, index) => (
-                <Reveal key={project.id} delay={index * 0.07} className="h-full">
-                  <ProjectCard project={project} />
+                <Reveal
+                  key={project.id}
+                  delay={index * 0.04}
+                  className={cn("h-full", index === 0 && "md:col-span-2")}
+                >
+                  <ProjectCard project={project} featured={index === 0} />
                 </Reveal>
               ))}
             </div>
@@ -167,97 +171,98 @@ export function ProjectGallery() {
   )
 }
 
-function ProjectCard({ project }: { project: GardenProject }) {
+function ProjectCard({ project, featured = false }: { project: GardenProject; featured?: boolean }) {
   return (
-    <Card className="h-full rounded-3xl border border-forest/10 bg-card p-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-30px_rgba(36,40,37,0.55)]">
+    <Card
+      className={cn(
+        "h-full overflow-hidden rounded-lg border border-forest/10 bg-card p-0 shadow-none transition-colors hover:border-forest/25",
+        featured && "md:grid md:grid-cols-[1.08fr_0.92fr]"
+      )}
+    >
       <BeforeAfterSlider
         beforeSrc={project.beforeSrc}
         afterSrc={project.afterSrc}
         beforeAlt={project.beforeAlt}
         afterAlt={project.afterAlt}
-        className="aspect-[1.32] rounded-t-3xl"
+        priority={featured}
+        className={cn(
+          "aspect-[1.32] rounded-t-lg",
+          featured && "aspect-[1.2] md:h-full md:min-h-[28rem] md:aspect-auto md:rounded-l-lg md:rounded-tr-none"
+        )}
       />
-      <CardHeader className="gap-2 px-5 pt-5 sm:px-6 sm:pt-6">
-        <p className="inline-flex items-center gap-1.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-terracotta">
-          <MapPin aria-hidden="true" className="size-3.5" />
-          {project.location}
-        </p>
-        <CardTitle className="font-display text-2xl leading-tight font-medium text-forest sm:text-[1.7rem]">
-          {project.title}
-        </CardTitle>
-        <CardDescription className="text-sm leading-6 text-ink-soft">
-          {project.description}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="px-5 pb-5 sm:px-6 sm:pb-6">
-        <div className="flex flex-wrap gap-2">
-          <span className="rounded-full border border-forest/10 bg-linen px-3 py-1.5 text-[0.65rem] font-medium text-forest">
-            {project.detail}
-          </span>
-          {project.highlights.slice(0, 1).map((highlight) => (
-            <span key={highlight} className="inline-flex items-center gap-1.5 rounded-full bg-forest/7 px-3 py-1.5 text-[0.65rem] font-medium text-forest">
-              <Check aria-hidden="true" className="size-3.5" />
-              {highlight}
-            </span>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="justify-between border-t border-forest/10 bg-transparent px-5 py-4 sm:px-6">
-        <span className="text-xs font-medium text-ink-soft">Before &amp; after</span>
-        <Dialog>
-          <DialogTrigger className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold text-forest transition-colors hover:bg-linen focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-            Project notes
-            <ArrowUpRight aria-hidden="true" className="size-3.5" />
-          </DialogTrigger>
-          <DialogContent className="max-h-[92dvh] max-w-5xl overflow-y-auto p-0">
-            <div className="grid md:grid-cols-[1.03fr_0.97fr]">
-              <div className="min-h-64 md:min-h-[34rem]">
-                <BeforeAfterSlider
-                  beforeSrc={project.beforeSrc}
-                  afterSrc={project.afterSrc}
-                  beforeAlt={project.beforeAlt}
-                  afterAlt={project.afterAlt}
-                  className="h-full min-h-64 aspect-[1.1] md:aspect-auto"
-                />
-              </div>
-              <div className="flex flex-col gap-6 p-6 sm:p-8">
-                <DialogHeader className="gap-3">
-                  <span className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-terracotta">
-                    Project notes · {project.location}
-                  </span>
-                  <DialogTitle className="max-w-sm pr-8 text-3xl text-forest sm:text-4xl">
-                    {project.title}
-                  </DialogTitle>
-                  <DialogDescription>{project.description}</DialogDescription>
-                </DialogHeader>
-                <div>
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-forest">
-                    The thoughtful details
-                  </p>
-                  <ul className="flex flex-col gap-3">
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-2.5 text-sm leading-6 text-ink-soft">
-                        <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-terracotta" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
+      <div className={cn("flex min-w-0 flex-col p-5 sm:p-7", featured && "md:justify-center")}>
+        <CardHeader className="gap-2 p-0">
+          <p className="inline-flex items-center gap-1.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-terracotta">
+            <MapPin aria-hidden="true" className="size-3.5" />
+            {project.location}
+          </p>
+          <CardTitle className={cn("font-display text-xl leading-tight font-medium text-forest sm:text-2xl", featured && "sm:text-3xl")}>
+            {project.title}
+          </CardTitle>
+          <CardDescription className="text-sm leading-6 text-ink-soft">
+            {project.description}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="px-0 pt-4 pb-0">
+          <p className="text-xs font-semibold text-forest">{project.detail}</p>
+        </CardContent>
+        <CardFooter className={cn("mt-auto justify-between gap-2 border-t border-forest/10 bg-transparent p-0 pt-4", featured && "md:mt-8")}>
+          <span className="text-xs font-medium text-ink-soft">Before &amp; after</span>
+          <Dialog>
+            <DialogTrigger className="inline-flex min-h-10 items-center gap-1.5 rounded-md px-3 py-2 text-xs font-semibold text-forest transition-colors hover:bg-linen focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              Project notes
+              <ArrowUpRight aria-hidden="true" className="size-3.5" />
+            </DialogTrigger>
+            <DialogContent className="max-h-[92dvh] max-w-5xl overflow-y-auto p-0">
+              <div className="grid md:grid-cols-[1.03fr_0.97fr]">
+                <div className="min-h-64 md:min-h-[34rem]">
+                  <BeforeAfterSlider
+                    beforeSrc={project.beforeSrc}
+                    afterSrc={project.afterSrc}
+                    beforeAlt={project.beforeAlt}
+                    afterAlt={project.afterAlt}
+                    className="h-full min-h-64 aspect-[1.1] md:aspect-auto"
+                  />
                 </div>
-                <p className="mt-auto rounded-2xl bg-sage/70 p-4 text-xs leading-6 text-ink-soft">
-                  {project.detail}. A considered plan, clear materials, and a garden made to be lived in.
-                </p>
-                <Link
-                  href="#planner"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
-                >
-                  Plan a garden like this
-                  <ArrowUpRight aria-hidden="true" className="size-4" />
-                </Link>
+                <div className="flex flex-col gap-6 p-6 sm:p-8">
+                  <DialogHeader className="gap-3">
+                    <span className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-terracotta">
+                      Project notes · {project.location}
+                    </span>
+                    <DialogTitle className="max-w-sm pr-8 text-3xl text-forest sm:text-4xl">
+                      {project.title}
+                    </DialogTitle>
+                    <DialogDescription>{project.description}</DialogDescription>
+                  </DialogHeader>
+                  <div>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-forest">
+                      The thoughtful details
+                    </p>
+                    <ul className="flex flex-col gap-3">
+                      {project.highlights.map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-2.5 text-sm leading-6 text-ink-soft">
+                          <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-terracotta" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p className="mt-auto rounded-lg bg-sage/70 p-4 text-xs leading-6 text-ink-soft">
+                    {project.detail}. A considered plan, clear materials, and a garden made to be lived in.
+                  </p>
+                  <Link
+                    href="#planner"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                  >
+                    Plan a garden like this
+                    <ArrowUpRight aria-hidden="true" className="size-4" />
+                  </Link>
+                </div>
               </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </CardFooter>
+            </DialogContent>
+          </Dialog>
+        </CardFooter>
+      </div>
     </Card>
   )
 }

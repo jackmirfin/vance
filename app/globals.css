@@ -42,13 +42,13 @@
 
 :root {
   color-scheme: light;
-  --linen: #f6f4ee;
-  --sage: #eaece7;
-  --forest: #2d3a2e;
-  --forest-deep: #243127;
-  --terracotta: #c37d55;
-  --ink: #242825;
-  --ink-soft: #69716a;
+  --linen: #f5f2eb;
+  --sage: #e8e9e3;
+  --forest: #29382d;
+  --forest-deep: #202b23;
+  --terracotta: #ac704e;
+  --ink: #283229;
+  --ink-soft: #69736b;
   --background: var(--linen);
   --foreground: var(--ink);
   --card: var(--sage);
@@ -67,7 +67,7 @@
   --border: rgb(45 58 46 / 13%);
   --input: rgb(45 58 46 / 18%);
   --ring: var(--terracotta);
-  --radius: 1rem;
+  --radius: 0.5rem;
 }
 
 html {
@@ -100,6 +100,10 @@ a {
 ::selection {
   background: var(--terracotta);
   color: #fffaf5;
+}
+
+.logo-cream {
+  filter: brightness(0) saturate(100%) invert(97%) sepia(7%) saturate(340%) hue-rotate(351deg) brightness(102%) contrast(95%);
 }
 
 .comparison-range {
