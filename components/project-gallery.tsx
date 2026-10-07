@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Check, MapPin } from "lucide-react"
 import { BeforeAfterSlider } from "@/components/before-after-slider"
+import { brandAssets } from "@/lib/brand-assets"
 import { Reveal } from "@/components/reveal"
 import { Button } from "@/components/ui/button"
 import {
@@ -51,46 +52,46 @@ type GardenProject = {
 
 const projects: GardenProject[] = [
   {
-    id: "maplewood-retreat",
-    title: "A backyard made for lingering",
-    location: "Maplewood, NJ",
-    detail: "Full garden overhaul · 3 weeks",
+    id: "northampton-garden",
+    title: "A Northampton garden, reimagined",
+    location: "Northampton",
+    detail: "Patio & lawn transformation",
     description:
-      "A once-overlooked yard becomes a calm outdoor room, with a generous stone patio, layered planting, and an easy path back to the house.",
-    beforeSrc: "/gardens/maplewood-before.png",
-    afterSrc: "/gardens/maplewood-after.png",
-    beforeAlt: "Before: cracked concrete and overgrown shrubs in a Maplewood backyard.",
-    afterAlt: "After: a welcoming garden with a stone terrace, curved beds, and mature trees.",
+      "A tired garden becomes an inviting outdoor room, with a warm sandstone patio, lavender borders, and space to enjoy the lawn.",
+    beforeSrc: brandAssets.projects.northampton.before,
+    afterSrc: brandAssets.projects.northampton.after,
+    beforeAlt: "A Northampton garden before its landscaping transformation.",
+    afterAlt: "A finished Northampton garden with a sandstone patio and lavender border.",
+    filters: ["family", "outdoor", "patios"],
+    highlights: ["Warm sandstone patio", "Lavender planting", "A more useful lawn"],
+  },
+  {
+    id: "family-garden",
+    title: "A family garden made to enjoy",
+    location: "Northamptonshire",
+    detail: "Family garden transformation",
+    description:
+      "A garden makeover brings a fresh sense of purpose to the outdoor space, with room for family time and relaxed afternoons outside.",
+    beforeSrc: brandAssets.projects.family.before,
+    afterSrc: brandAssets.projects.family.after,
+    beforeAlt: "A family garden before its makeover.",
+    afterAlt: "A completed family garden transformation in Northamptonshire.",
     filters: ["family", "outdoor"],
-    highlights: ["Curved planting beds", "Natural stone terrace", "A quieter, more useful layout"],
+    highlights: ["A refreshed garden layout", "Room for family time", "An inviting outdoor space"],
   },
   {
-    id: "patio-and-planting",
-    title: "A terrace with room to gather",
-    location: "Essex County, NJ",
-    detail: "Patio & perennial border",
+    id: "stone-courtyard",
+    title: "A courtyard with a warmer feel",
+    location: "Northamptonshire",
+    detail: "Courtyard garden makeover",
     description:
-      "Clear lines, a welcoming table, and generous planting turn a worn patio into an outdoor dining spot that feels connected to the garden.",
-    beforeSrc: "/gardens/patio-before.png",
-    afterSrc: "/gardens/patio-after.png",
-    beforeAlt: "Before: a simple lawn and aging patio with little definition or seating.",
-    afterAlt: "After: a warm paved terrace surrounded by layered flowering plants and garden seating.",
-    filters: ["patios", "outdoor"],
-    highlights: ["Paved dining terrace", "Soft, layered borders", "A clearer garden path"],
-  },
-  {
-    id: "city-courtyard",
-    title: "A pocket-sized place to pause",
-    location: "Essex County, NJ",
-    detail: "Small courtyard transformation",
-    description:
-      "A compact footprint finds its rhythm with built-in seating, raised beds, and a simple stone palette that makes every corner count.",
-    beforeSrc: "/gardens/courtyard-before.png",
-    afterSrc: "/gardens/courtyard-after.png",
-    beforeAlt: "Before: a bare enclosed courtyard with a plain paved floor and minimal planting.",
-    afterAlt: "After: a refined courtyard with built-in timber seating, raised planting, and a compact café table.",
-    filters: ["small"],
-    highlights: ["Built-in timber bench", "Raised planting beds", "Space-saving layout"],
+      "A neglected courtyard is reworked with warm sandstone and considered planting to create a calm, welcoming place to pause.",
+    beforeSrc: brandAssets.projects.courtyard.before,
+    afterSrc: brandAssets.projects.courtyard.after,
+    beforeAlt: "A neglected courtyard before landscaping.",
+    afterAlt: "A transformed courtyard with warm sandstone and garden planting.",
+    filters: ["small", "patios"],
+    highlights: ["Warm sandstone paving", "A calmer courtyard", "A considered planting scheme"],
   },
 ]
 

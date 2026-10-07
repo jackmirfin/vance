@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-const nearbyTowns = ["Maplewood", "South Orange", "Millburn", "Montclair", "West Orange", "Livingston"]
 
 export function TrustSection() {
   return (
@@ -52,7 +51,7 @@ export function TrustSection() {
               <CardContent className="px-6 pb-6 sm:px-8 sm:pb-8">
                 <div className="mt-3 flex items-center gap-2 border-t border-linen/15 pt-4 text-xs font-medium text-linen/80">
                   <MapPin aria-hidden="true" className="size-4 text-[#E5B278]" />
-                  Proudly local to Maplewood and Essex County
+                  Proudly serving Northamptonshire
                 </div>
               </CardContent>
             </Card>
@@ -105,7 +104,7 @@ export function TrustSection() {
               Our local service area
             </p>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
-              {nearbyTowns.join(" · ")} and surrounding Essex County communities.
+              Northampton and surrounding Northamptonshire communities.
             </p>
           </div>
           <Link

@@ -2,6 +2,13 @@
 const nextConfig = {
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/dlgn2pybf/image/upload/**',
+      },
+    ],
   },
   async headers() {
     return [

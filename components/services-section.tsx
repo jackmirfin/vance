@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Check, Flower2, Layers3, Lightbulb, Waves } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import { brandAssets } from "@/lib/brand-assets"
 import {
   Accordion,
   AccordionContent,
@@ -28,8 +29,8 @@ const services = [
     title: "Grounded in good materials.",
     description:
       "Create a natural extension of your home with considered paving, clear transitions, and the right places to sit, gather, and move through the garden.",
-    image: "/gardens/patio-after.png",
-    imageAlt: "A warm stone patio connected to a lush garden with flowering borders.",
+    image: brandAssets.projects.northampton.after,
+    imageAlt: "A warm sandstone patio and lavender border in Northampton.",
     benefits: ["Porcelain and natural stone options", "Paths, steps, and retaining edges", "A layout designed around everyday use"],
   },
   {
@@ -39,8 +40,8 @@ const services = [
     title: "A little more life in every season.",
     description:
       "Thoughtful planting brings texture, color, and a sense of privacy—chosen for your light, soil, and the time you want to spend caring for it.",
-    image: "/gardens/maplewood-after.png",
-    imageAlt: "A layered garden border with hydrangeas, ornamental grasses, and a mature tree.",
+    image: brandAssets.supporting,
+    imageAlt: "A Northamptonshire garden naturally transformed with considered planting.",
     benefits: ["Planting plans with year-round interest", "Low-maintenance selections", "A thoughtful balance of lawn and beds"],
   },
   {
@@ -50,8 +51,8 @@ const services = [
     title: "A little shade, a lot more outside.",
     description:
       "Warm timber and simple structures can add definition, shade, and an inviting place to spend long afternoons outdoors.",
-    image: "/gardens/courtyard-after.png",
-    imageAlt: "Timber garden seating integrated into a compact planted courtyard.",
+    image: brandAssets.projects.family.after,
+    imageAlt: "A finished family garden transformation in Northamptonshire.",
     benefits: ["Timber decks and built-in seating", "Pergolas that frame outdoor rooms", "Details designed to sit naturally in the garden"],
   },
   {
@@ -61,8 +62,8 @@ const services = [
     title: "Let the garden carry into evening.",
     description:
       "Soft lighting and the quiet movement of water add another layer to the garden—subtle by day, welcoming after sunset.",
-    image: "/gardens/courtyard-after.png",
-    imageAlt: "A softly lit courtyard with layered greenery and a calm outdoor seating area.",
+    image: brandAssets.projects.courtyard.after,
+    imageAlt: "A warm sandstone courtyard garden makeover in Northamptonshire.",
     benefits: ["Ambient, low-glare lighting", "Water features sized to the space", "A considered plan for evening use"],
   },
 ]

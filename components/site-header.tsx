@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { ArrowUpRight, Menu, Sprout, X } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { brandAssets } from "@/lib/brand-assets"
 
 const navItems = [
   { label: "Our transformations", href: "#projects" },
@@ -15,35 +17,63 @@ const navItems = [
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [headerHidden, setHeaderHidden] = useState(false)
   const reduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    let previousScrollY = window.scrollY
+
+    function handleScroll() {
+      const currentScrollY = window.scrollY
+      const scrollDelta = currentScrollY - previousScrollY
+
+      if (currentScrollY < 96) {
+        setHeaderHidden(false)
+      } else if (scrollDelta > 3) {
+        setHeaderHidden(true)
+        setMenuOpen(false)
+      } else if (scrollDelta < -3) {
+        setHeaderHidden(false)
+      }
+
+      previousScrollY = currentScrollY
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   function closeMenu() {
     setMenuOpen(false)
   }
 
   return (
-    <header className="sticky top-0 border-b border-forest/10 bg-linen/95 backdrop-blur-xl">
+    <motion.header
+      initial={false}
+      animate={{ y: headerHidden ? "-105%" : "0%" }}
+      transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeInOut" }}
+      inert={headerHidden}
+      className="sticky top-0 z-50 border-b border-forest/10 bg-linen shadow-sm"
+    >
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
       >
         <Link
           href="#top"
-          aria-label="Vance and Co. Garden Design home"
-          className="group inline-flex min-w-0 items-center gap-3"
+          aria-label="Advance Gardens home"
+          className="inline-flex min-w-0 shrink-0 items-center"
           onClick={closeMenu}
         >
-          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-forest text-linen transition-transform duration-300 group-hover:rotate-[-8deg]">
-            <Sprout aria-hidden="true" className="size-5" />
-          </span>
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="font-display text-xl font-semibold tracking-tight text-forest sm:text-2xl">
-              Vance <span className="font-normal italic">&amp; Co.</span>
-            </span>
-            <span className="mt-1.5 hidden text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-ink-soft sm:block">
-              Garden Design &amp; Landscaping
-            </span>
-          </span>
+          <Image
+            src={brandAssets.logo}
+            alt="Advance Gardens"
+            width={320}
+            height={100}
+            priority
+            sizes="(min-width: 640px) 208px, 160px"
+            className="h-10 w-40 object-contain object-left sm:h-12 sm:w-52"
+          />
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -114,6 +144,6 @@ export function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 }

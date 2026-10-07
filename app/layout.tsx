@@ -19,21 +19,21 @@ const bodyFont = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Vance & Co. Garden Design | Maplewood & Essex County, NJ',
+  title: 'Advance Gardens | Garden Design & Landscaping in Northamptonshire',
   description:
-    'Bespoke garden design and landscaping in Maplewood and Essex County. Thoughtful patios, planting, decks, and outdoor living spaces made for real life.',
-  applicationName: 'Vance & Co. Garden Design',
+    'Advance Gardens creates thoughtful gardens, patios, and outdoor living spaces in Northampton and across Northamptonshire.',
+  applicationName: 'Advance Gardens',
   keywords: [
-    'garden design Maplewood NJ',
-    'landscaping Essex County NJ',
+    'garden design Northamptonshire',
+    'landscaping Northampton',
     'patios and hardscaping',
     'garden transformation',
   ],
   openGraph: {
-    title: 'Vance & Co. Garden Design',
+    title: 'Advance Gardens',
     description:
-      'Thoughtful garden design and outdoor living spaces in Maplewood and Essex County, New Jersey.',
-    siteName: 'Vance & Co. Garden Design',
+      'Thoughtful garden design, landscaping, and outdoor living in Northamptonshire.',
+    siteName: 'Advance Gardens',
     type: 'website',
   },
 }
