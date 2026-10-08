@@ -18,7 +18,9 @@ const navItems = [
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerHidden, setHeaderHidden] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
   const reduceMotion = useReducedMotion()
+  const headerSolid = hasScrolled || menuOpen
 
   useEffect(() => {
     let previousScrollY = window.scrollY
@@ -26,6 +28,8 @@ export function SiteHeader() {
     function handleScroll() {
       const currentScrollY = window.scrollY
       const scrollDelta = currentScrollY - previousScrollY
+
+      setHasScrolled(currentScrollY > 12)
 
       if (currentScrollY < 96) {
         setHeaderHidden(false)
@@ -39,6 +43,7 @@ export function SiteHeader() {
       previousScrollY = currentScrollY
     }
 
+    handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -53,7 +58,11 @@ export function SiteHeader() {
       animate={{ y: headerHidden ? "-105%" : "0%" }}
       transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeInOut" }}
       inert={headerHidden}
-      className="sticky top-0 z-50 border-b border-forest/10 bg-linen shadow-none"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        headerSolid
+          ? "border-forest/10 bg-linen shadow-sm"
+          : "border-transparent bg-transparent shadow-none"
+      }`}
     >
       <nav
         aria-label="Primary navigation"
@@ -72,7 +81,9 @@ export function SiteHeader() {
             height={417}
             priority
             sizes="(min-width: 640px) 248px, 196px"
-            className="h-[42px] w-[196px] object-contain object-left sm:h-[52px] sm:w-[248px]"
+            className={`h-[42px] w-[196px] object-contain object-left transition-[filter] duration-300 sm:h-[52px] sm:w-[248px] ${
+              headerSolid ? "" : "logo-cream"
+            }`}
           />
         </Link>
 
@@ -81,7 +92,9 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[0.78rem] font-semibold text-ink-soft transition-colors hover:text-forest"
+              className={`text-[0.78rem] font-semibold transition-colors ${
+                headerSolid ? "text-ink-soft hover:text-forest" : "text-linen/90 hover:text-linen"
+              }`}
             >
               {item.label}
             </Link>
@@ -103,7 +116,11 @@ export function SiteHeader() {
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
-            className="size-11 rounded-full border-forest/15 bg-linen text-forest lg:hidden"
+            className={`size-11 rounded-full border lg:hidden ${
+              headerSolid
+                ? "border-forest/15 bg-linen text-forest"
+                : "border-linen/40 bg-forest/20 text-linen hover:bg-forest/35"
+            }`}
             onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X data-icon="inline-start" /> : <Menu data-icon="inline-start" />}
